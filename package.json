@@ -1,0 +1,29 @@
+{
+  "name": "messaging-app",
+  "version": "1.0.0",
+  "description": "",
+  "homepage": "https://github.com/sagar-shrigadi/Messaging-App#readme",
+  "bugs": {
+    "url": "https://github.com/sagar-shrigadi/Messaging-App/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sagar-shrigadi/Messaging-App.git"
+  },
+  "license": "ISC",
+  "author": "",
+  "type": "module",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "node --watch app.js"
+  },
+  "dependencies": {
+    "@prisma/adapter-pg": "^7.8.0",
+    "@prisma/client": "^7.8.0",
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "pg": "^8.21.0",
+    "prisma": "^7.8.0"
+  }
+}
