@@ -16,7 +16,7 @@ model User {
   id Int @id @default(autoincrement())
   username String @unique
   password String
-  bio String
+  bio String?
   sentMsg Message[] @relation("sent-msg")
   receiveMsg Message[] @relation("receive-msg")
 }
