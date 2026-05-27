@@ -27,6 +27,6 @@ model Message {
   createdAt DateTime @default(now())
   authorId Int
   author User @relation("sent-msg", fields: [authorId], references: [id])
-  toUserId Int
-  toUser User @relation("receive-msg", fields: [toUserId], references: [id])
+  toUserId Int?
+  toUser User? @relation("receive-msg", fields: [toUserId], references: [id])
 }

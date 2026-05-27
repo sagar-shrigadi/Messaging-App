@@ -9,7 +9,7 @@ export const signup = async (req, res, next) => {
 
     const newUser = await postUser(username, hashedPass);
 
-    return res.json({ newUser });
+    return res.status(201).json({ newUser });
   } catch (error) {
     console.log("sign up error", error);
     next(error);
