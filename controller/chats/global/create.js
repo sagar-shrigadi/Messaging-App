@@ -1,6 +1,6 @@
 import { postGlobalMessage } from "../../../models/message.js";
 
-export const createGlobalMsg = async (req, res, next) => {
+export const postGlobalMsg = async (req, res, next) => {
   const userId = Number(req.user.id);
   const { message } = req.body;
 

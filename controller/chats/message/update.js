@@ -1,15 +1,15 @@
 import { editMessageById, getMessageById } from "../../../models/message.js";
 
-export const updateGlobalMsg = async (req, res, next) => {
+export const updateMsg = async (req, res, next) => {
   const userId = Number(req.user.id);
-  const msgId = Number(req.params.messageId);
+  const messageId = Number(req.params.messageId);
+  const { message } = req.body;
 
   try {
-    const { message } = req.body;
-    const MsgToUpdate = await getMessageById(msgId);
+    const msgToUpdate = await getMessageById(messageId);
 
-    if (MsgToUpdate.authorId === userId) {
-      const updatedMsg = await editMessageById(msgId, message);
+    if (msgToUpdate.authorId === userId) {
+      const updatedMsg = await editMessageById(messageId, message);
       return res.json({ updatedMsg });
     } else {
       return res.status(403).end();

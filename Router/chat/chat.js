@@ -1,8 +1,8 @@
 import { Router } from "express";
-import { globalMsg } from "./globalMsg/globalMsg.js";
-import { userMsg } from "./userMsg/userMsg.js";
+import { postGlobalMsg } from "../../controller/chats/global/create.js";
+import { userMsg } from "./user/user.js";
 
 export const chat = Router();
 
-chat.use("/global", globalMsg);
-chat.use("/:toUserId", userMsg);
+chat.post("/global", postGlobalMsg);
+chat.use("/users", userMsg);
