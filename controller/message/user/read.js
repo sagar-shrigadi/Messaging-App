@@ -4,6 +4,10 @@ export const getMsgBetweenUsers = async (req, res, next) => {
   const userId = Number(req.user.id);
   const targetUserId = Number(req.params.toUserId);
 
+  if (userId === targetUserId) {
+    return res.status(400).json({ msg: "Invalid request!" });
+  }
+
   try {
     const chatMsg = await getMessagesBetweenUsers(userId, targetUserId);
     console.log(`betn user ${userId} and to user ${targetUserId}`, chatMsg);

@@ -5,6 +5,10 @@ export const postMsgToUser = async (req, res, next) => {
   const targetUserId = Number(req.params.toUserId);
   console.log("target user id", targetUserId);
 
+  if (userId === targetUserId) {
+    return res.status(400).json({ msg: "Invalid request!" });
+  }
+
   try {
     const { message } = req.body;
     const newMsgToUser = await postMessageToUser(userId, targetUserId, message);
