@@ -3,6 +3,7 @@ import { prisma } from "../lib/prisma.js";
 export const postGlobalMessage = (userId, message) => {
   return prisma.message.create({
     data: { content: message, author: { connect: { id: userId } } },
+    include: { author: { select: { username: true } } },
   });
 };
 export const getAllGlobalMessage = () => {
@@ -22,6 +23,7 @@ export const editMessageById = (messageId, message) => {
   return prisma.message.update({
     where: { id: messageId },
     data: { content: message },
+    include: { author: { select: { username: true } } },
   });
 };
 export const deleteMessageById = (messageId) => {
@@ -48,5 +50,6 @@ export const postMessageToUser = (userId, targetUserId, message) => {
       toUser: { connect: { id: targetUserId } },
       author: { connect: { id: userId } },
     },
+    include: { author: { select: { username: true } } },
   });
 };
