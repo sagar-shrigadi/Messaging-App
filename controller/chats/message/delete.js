@@ -7,6 +7,8 @@ export const deleteMsg = async (req, res, next) => {
   try {
     const msgToDelete = await getMessageById(messageId);
 
+    if (!msgToDelete) return res.status(404).end();
+
     if (msgToDelete.authorId === userId) {
       await deleteMessageById(messageId);
       return res.status(204).end();

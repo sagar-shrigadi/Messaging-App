@@ -11,7 +11,10 @@ export const postGlobalMsg = [
     try {
       const { message } = matchedData(req);
       const newGlobalMessage = await postGlobalMessage(userId, message);
-      return res.status(201).json({ newMessage: newGlobalMessage });
+      return res.status(201).json({
+        success: true,
+        data: newGlobalMessage,
+      });
     } catch (error) {
       console.error("create global message", error);
       next(error);

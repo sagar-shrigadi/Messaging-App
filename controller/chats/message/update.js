@@ -16,7 +16,10 @@ export const updateMsg = [
 
       if (msgToUpdate.authorId === userId) {
         const updatedMsg = await editMessageById(messageId, message);
-        return res.json({ updatedMsg });
+        return res.status(200).json({
+          success: true,
+          data: updatedMsg,
+        });
       } else {
         return res.status(403).end();
       }

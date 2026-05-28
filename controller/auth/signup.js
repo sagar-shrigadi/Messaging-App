@@ -15,7 +15,10 @@ export const signup = [
 
       const newUser = await postUser(username, hashedPass);
 
-      return res.status(201).json({ newUser });
+      return res.status(201).json({
+        success: true,
+        data: newUser,
+      });
     } catch (error) {
       console.log("sign up error", error);
       return next(error);

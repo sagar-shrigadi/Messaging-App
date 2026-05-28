@@ -22,7 +22,10 @@ export const postMsgToUser = [
         targetUserId,
         message,
       );
-      return res.status(201).json({ newMsgToUser });
+      return res.status(201).json({
+        success: true,
+        data: newMsgToUser,
+      });
     } catch (error) {
       console.error("post msg to user", error);
       next(error);

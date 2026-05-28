@@ -8,9 +8,9 @@ export const profile = async (req, res, next) => {
 
     const userId = Number(req.user.id);
     const user = await getUser(userId);
-    return res.json({
-      msg: "welcome",
-      user,
+    return res.status(200).json({
+      success: true,
+      data: user,
     });
   } catch (error) {
     next(error);

@@ -29,7 +29,11 @@ export const login = [
           process.env.JWT_SECRET,
           { expiresIn: "1d" },
         );
-        return res.json({ token });
+        // return res.json({ token });
+        return res.status(200).json({
+          success: true,
+          data: token,
+        });
       } else {
         const error = new Error("Invalid Credentials!");
         return next(error);

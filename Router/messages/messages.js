@@ -4,5 +4,5 @@ import { deleteMsg } from "../../controller/chats/message/delete.js";
 
 export const messages = Router();
 
-messages.put("/:messageId", updateMsg);
+messages.patch("/:messageId", updateMsg);
 messages.delete("/:messageId", deleteMsg);
