@@ -2,6 +2,7 @@ import { matchedData } from "express-validator";
 import { editMessageById, getMessageById } from "../../../models/message.js";
 import { messageValidations } from "../../validations/message.js";
 import { validateRequest } from "../../validations/validate.js";
+import { AppError } from "../../../helper/AppErr.js";
 
 export const updateMsg = [
   messageValidations,
@@ -14,6 +15,8 @@ export const updateMsg = [
       const { message } = matchedData(req);
       const msgToUpdate = await getMessageById(messageId);
 
+      if (!msgToUpdate) throw new AppError("Message does not exist!", 404);
+
       if (msgToUpdate.authorId === userId) {
         const updatedMsg = await editMessageById(messageId, message);
         return res.status(200).json({
@@ -21,7 +24,7 @@ export const updateMsg = [
           data: updatedMsg,
         });
       } else {
-        return res.status(403).end();
+        throw new AppError("You are not permitted to perform this action", 403);
       }
     } catch (error) {
       console.error("update msg", error);

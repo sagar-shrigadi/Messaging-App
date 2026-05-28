@@ -1,5 +1,5 @@
 import * as argon2 from "argon2";
-import { getUserAuth, postUser } from "../../models/user.js";
+import { postUser } from "../../models/user.js";
 import { matchedData } from "express-validator";
 import { signUpValidations } from "../validations/signup.js";
 import { validateRequest } from "../validations/validate.js";
@@ -20,7 +20,7 @@ export const signup = [
         data: newUser,
       });
     } catch (error) {
-      console.log("sign up error", error);
+      console.error("sign up error", error);
       return next(error);
     }
   },

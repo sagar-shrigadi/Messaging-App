@@ -1,4 +1,5 @@
 import { body } from "express-validator";
+import { getUserAuth } from "../../models/user.js";
 
 export const emptyErr = `must not be empty!`;
 export const signUpValidations = [

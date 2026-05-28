@@ -1,3 +1,4 @@
+import { AppError } from "../../../helper/AppErr.js";
 import { getMessagesBetweenUsers } from "../../../models/message.js";
 
 export const getMsgBetweenUsers = async (req, res, next) => {
@@ -5,9 +6,8 @@ export const getMsgBetweenUsers = async (req, res, next) => {
   const targetUserId = Number(req.params.toUserId);
 
   if (userId === targetUserId) {
-    return res.status(400).json({ msg: "Invalid request!" });
+    throw new AppError("Invalid request", 400);
   }
-
   try {
     const chatMsg = await getMessagesBetweenUsers(userId, targetUserId);
     console.log(`betn user ${userId} and to user ${targetUserId}`, chatMsg);

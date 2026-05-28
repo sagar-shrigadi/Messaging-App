@@ -1,3 +1,4 @@
+import { AppError } from "../helper/AppErr.js";
 import { getUser } from "../models/user.js";
 
 export const profile = async (req, res, next) => {
@@ -8,6 +9,7 @@ export const profile = async (req, res, next) => {
 
     const userId = Number(req.user.id);
     const user = await getUser(userId);
+    if (!user) throw new AppError("User does not exist!", 404);
     return res.status(200).json({
       success: true,
       data: user,

@@ -5,6 +5,7 @@ import { getUserAuth } from "../../models/user.js";
 import { matchedData } from "express-validator";
 import { loginValidations } from "../validations/login.js";
 import { validateRequest } from "../validations/validate.js";
+import { AppError } from "../../helper/AppErr.js";
 
 export const login = [
   loginValidations,
@@ -21,6 +22,9 @@ export const login = [
       );
       console.log("pass match", passMatch);
 
+      if (!user || !passMatch) {
+        throw new AppError("Invalid Credentials!", 400);
+      }
       if (user && passMatch) {
         const token = jwt.sign(
           {
@@ -29,14 +33,10 @@ export const login = [
           process.env.JWT_SECRET,
           { expiresIn: "1d" },
         );
-        // return res.json({ token });
         return res.status(200).json({
           success: true,
           data: token,
         });
-      } else {
-        const error = new Error("Invalid Credentials!");
-        return next(error);
       }
     } catch (error) {
       console.error("login error", error);

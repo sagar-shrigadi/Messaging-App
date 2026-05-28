@@ -2,6 +2,7 @@ import { matchedData } from "express-validator";
 import { postMessageToUser } from "../../../models/message.js";
 import { messageValidations } from "../../validations/message.js";
 import { validateRequest } from "../../validations/validate.js";
+import { AppError } from "../../../helper/AppErr.js";
 
 export const postMsgToUser = [
   messageValidations,
@@ -12,7 +13,7 @@ export const postMsgToUser = [
     // console.log("target user id", targetUserId);
 
     if (userId === targetUserId) {
-      return res.status(400).json({ msg: "Invalid request!" });
+      throw new AppError("Invalid request", 400);
     }
 
     try {
