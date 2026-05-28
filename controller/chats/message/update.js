@@ -1,16 +1,12 @@
-import { body, matchedData, validationResult } from "express-validator";
+import { matchedData } from "express-validator";
 import { editMessageById, getMessageById } from "../../../models/message.js";
-import { msgValidations } from "../global/create.js";
+import { messageValidations } from "../../validations/message.js";
+import { validateRequest } from "../../validations/validate.js";
 
 export const updateMsg = [
-  msgValidations,
+  messageValidations,
+  validateRequest,
   async (req, res, next) => {
-    const errors = validationResult(req);
-    if (!errors.isEmpty()) {
-      const error = errors.array();
-      return res.status(400).json({ error });
-    }
-
     const userId = Number(req.user.id);
     const messageId = Number(req.params.messageId);
 
