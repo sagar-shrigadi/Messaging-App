@@ -20,7 +20,6 @@ export const login = [
         user?.password ?? process.env.FALLBACK_HASH,
         password,
       );
-      console.log("pass match", passMatch);
 
       if (!user || !passMatch) {
         throw new AppError("Invalid Credentials!", 400);
@@ -39,7 +38,7 @@ export const login = [
         });
       }
     } catch (error) {
-      console.error("login error", error);
+      // console.error("login error", error);
       return next(error);
     }
   },
