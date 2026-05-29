@@ -17,5 +17,6 @@ export const postUser = (username, password) => {
       username,
       password,
     },
+    select: { username: true },
   });
 };
