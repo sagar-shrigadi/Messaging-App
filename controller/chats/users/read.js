@@ -10,7 +10,7 @@ export const getMsgBetweenUsers = async (req, res, next) => {
   }
   try {
     const chatMsg = await getMessagesBetweenUsers(userId, targetUserId);
-    console.log(`betn user ${userId} and to user ${targetUserId}`, chatMsg);
+    // console.log(`betn user ${userId} and to user ${targetUserId}`, chatMsg);
 
     return res.status(200).json({
       success: true,
