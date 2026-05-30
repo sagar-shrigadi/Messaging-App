@@ -8,7 +8,7 @@ export const authenticateToken = (req, res, next) => {
   const token = authHeader && authHeader.split(" ")[1];
   try {
     if (!token) {
-      throw new AppError("Token Missing", 400);
+      throw new AppError("Token Missing", 401);
     }
     const decoded = jwt.verify(token, process.env.JWT_SECRET, {
       algorithms: ["HS256"],

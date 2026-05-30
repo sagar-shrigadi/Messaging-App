@@ -5,8 +5,8 @@ const prismaDisconnect = async () => await prisma.$disconnect();
 
 const clearDb = async () =>
   await prisma.$transaction([
-    prisma.user.deleteMany(),
     prisma.message.deleteMany(),
+    prisma.user.deleteMany(),
   ]);
 
 const createUser = async (username) => {
@@ -15,5 +15,23 @@ const createUser = async (username) => {
     data: { username, password: hashedPass },
   });
 };
-
-export { prismaDisconnect, clearDb, createUser };
+const createUserWithGlobalMessages = async (username) => {
+  const hash = await argon2.hash("123456");
+  return prisma.user.create({
+    data: {
+      username,
+      password: hash,
+      sentMsg: {
+        create: [
+          {
+            content: "Nested",
+          },
+          {
+            content: "More Nested",
+          },
+        ],
+      },
+    },
+  });
+};
+export { prismaDisconnect, clearDb, createUser, createUserWithGlobalMessages };
