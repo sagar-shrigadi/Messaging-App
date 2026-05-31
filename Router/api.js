@@ -1,9 +1,9 @@
 import { Router } from "express";
 import { auth } from "./auth/auth.js";
 import { authenticateToken } from "../controller/auth/authenticateToken.js";
-import { profile } from "../controller/profile.js";
 import { chat } from "./chat/chat.js";
 import { messages } from "./messages/messages.js";
+import { me } from "./me/me.js";
 
 export const api = Router();
 
@@ -22,4 +22,4 @@ api.use(authenticateToken);
 api.use("/messages", messages);
 
 // user info route
-api.get("/users/me", profile);
+api.use("/users", me);
