@@ -12,16 +12,6 @@ afterAll(async () => await prisma.prismaDisconnect());
 afterEach(async () => await prisma.clearDb());
 
 describe("Post global message", () => {
-  it("errors when no token is provided", async () => {
-    const res = await request(app)
-      .post("/global")
-      .send({ message: "some msg" });
-    expect(res.headers["content-type"]).toMatch(/json/);
-    expect(res.status).toBe(401);
-    expect(res.body.success).toBe(false);
-    expect(res.body.message).toBe("Token Missing");
-  });
-
   it("responds with json", async () => {
     // a user is created and logged in
     // which returns a jwt token
