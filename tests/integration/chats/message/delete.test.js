@@ -1,18 +1,18 @@
 import request from "supertest";
-import { app } from "../../setup/express.js";
-import { messages } from "../../../Router/messages/messages.js";
-import * as prisma from "../../setup/prisma.js";
-import { errHandler } from "../../../controller/errHandler.js";
-import { authenticateToken } from "../../../controller/auth/authenticateToken.js";
+import { app } from "../../../setup/express.js";
+import { messages } from "../../../../Router/messages/messages.js";
+import * as prisma from "../../../setup/prisma.js";
+import { errHandler } from "../../../../controller/errHandler.js";
+import { authenticateToken } from "../../../../controller/auth/authenticateToken.js";
 import {
   createAndLogUser,
   createUserWithGlobalMsgAndLogUser,
-} from "../../setup/helper/createAndLogUser.js";
-import { loginAndReturnUser } from "../../setup/helper/loginAndReturnUser.js";
+} from "../../../setup/helper/createAndLogUser.js";
+import { loginAndReturnUser } from "../../../setup/helper/loginAndReturnUser.js";
 import {
   postGlobalMessage,
   postMessageToUser,
-} from "../../../models/message.js";
+} from "../../../../models/message.js";
 
 app.use(authenticateToken);
 app.use("/", messages);

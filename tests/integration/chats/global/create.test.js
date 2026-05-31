@@ -1,9 +1,9 @@
 import request from "supertest";
-import { app } from "../../setup/express.js";
-import { chat } from "../../../Router/chat/chat.js";
-import * as prisma from "../../setup/prisma.js";
-import { errHandler } from "../../../controller/errHandler.js";
-import { createAndLogUser } from "../../setup/helper/createAndLogUser.js";
+import { app } from "../../../setup/express.js";
+import { chat } from "../../../../Router/chat/chat.js";
+import * as prisma from "../../../setup/prisma.js";
+import { errHandler } from "../../../../controller/errHandler.js";
+import { createAndLogUser } from "../../../setup/helper/createAndLogUser.js";
 
 app.use("/", chat);
 app.use(errHandler);

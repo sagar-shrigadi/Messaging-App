@@ -1,7 +1,7 @@
 import request from "supertest";
-import { auth } from "../../Router/auth/auth.js";
-import { app } from "../setup/express.js";
-import { prismaDisconnect, clearDb, createUser } from "../setup/prisma.js";
+import { auth } from "../../../Router/auth/auth.js";
+import { app } from "../../setup/express.js";
+import { prismaDisconnect, clearDb, createUser } from "../../setup/prisma.js";
 
 app.use("/", auth);
 

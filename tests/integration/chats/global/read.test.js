@@ -1,8 +1,8 @@
 import request from "supertest";
-import { app } from "../../setup/express.js";
-import { chat } from "../../../Router/chat/chat.js";
-import { errHandler } from "../../../controller/errHandler.js";
-import * as prisma from "../../setup/prisma.js";
+import { app } from "../../../setup/express.js";
+import { chat } from "../../../../Router/chat/chat.js";
+import { errHandler } from "../../../../controller/errHandler.js";
+import * as prisma from "../../../setup/prisma.js";
 
 app.use("/", chat);
 app.use(errHandler);
