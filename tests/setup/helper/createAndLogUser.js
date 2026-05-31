@@ -18,5 +18,16 @@ async function createAndLogUser(username) {
   //   console.log("helper", res.body);
   return res.body.data;
 }
-
-export { createAndLogUser };
+async function createUserWithGlobalMsgAndLogUser(username) {
+  const user = await prisma.createUserWithGlobalMessages(username);
+  const res = await request(app).post("/login").send({
+    username,
+    password: "123456",
+  });
+  //   console.log("helper", res.body);
+  return {
+    token: res.body.data,
+    msg: user.sentMsg,
+  };
+}
+export { createAndLogUser, createUserWithGlobalMsgAndLogUser };

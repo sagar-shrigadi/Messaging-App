@@ -32,6 +32,7 @@ const createUserWithGlobalMessages = async (username) => {
         ],
       },
     },
+    include: { sentMsg: true },
   });
 };
 export { prismaDisconnect, clearDb, createUser, createUserWithGlobalMessages };

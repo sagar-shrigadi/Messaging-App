@@ -14,10 +14,10 @@ export const deleteMsg = async (req, res, next) => {
       await deleteMessageById(messageId);
       return res.status(204).end();
     } else {
-      return new AppError("You are not permitted to perform this action", 403);
+      throw new AppError("You are not permitted to perform this action", 403);
     }
   } catch (error) {
-    console.error("delete msg", error);
+    // console.error("delete msg", error);
     next(error);
   }
 };
