@@ -11,6 +11,9 @@ export const getUser = (userId) => {
     where: { id: userId },
   });
 };
+export const getAllUsers = () => {
+  return prisma.user.findMany({ select: { id: true, username: true } });
+};
 export const postUser = (username, password) => {
   return prisma.user.create({
     data: {
