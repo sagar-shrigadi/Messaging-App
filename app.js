@@ -1,9 +1,14 @@
 import "dotenv/config";
 import express from "express";
+import cors from "cors";
+import helmet from "helmet";
 import { api } from "./Router/api.js";
 import { errHandler } from "./controller/errHandler.js";
 
 const app = express();
+
+app.use(cors());
+app.use(helmet());
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
