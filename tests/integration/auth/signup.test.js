@@ -176,7 +176,7 @@ describe("Failed Sign up", () => {
         errors: [
           {
             field: "confirmPassword",
-            message: "Password do not match!",
+            message: "Passwords do not match!",
           },
         ],
       });

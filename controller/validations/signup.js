@@ -31,5 +31,5 @@ export const signUpValidations = [
     .custom((value, { req }) => {
       return value === req.body.password;
     })
-    .withMessage("Password do not match!"),
+    .withMessage("Passwords do not match!"),
 ];

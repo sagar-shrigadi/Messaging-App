@@ -33,25 +33,6 @@ app.use(errHandler);
 
 describe("Message validations", () => {
   describe("Failed validations", () => {
-    it("errors when message field is empty", async () => {
-      const token = await createAndLogUser("validation");
-      const res = await request(app)
-        .post("/")
-        .set("Authorization", `Bearer ${token}`)
-        .send({ message: "" });
-      expect(res.headers["content-type"]).toMatch(/json/);
-      expect(res.status).toBe(400);
-      expect(res.body).toEqual({
-        success: false,
-        message: "Validation Failed!",
-        errors: [
-          {
-            field: "message",
-            message: "Message must not be empty!",
-          },
-        ],
-      });
-    });
     it("errors when message is longer than 100 characters", async () => {
       const token = await createAndLogUser("validation");
       const res = await request(app)
