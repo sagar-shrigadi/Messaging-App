@@ -23,3 +23,6 @@ export const postUser = (username, password) => {
     select: { username: true },
   });
 };
+export const updateUserBio = (userId, bio) => {
+  return prisma.user.update({ where: { id: userId }, data: { bio } });
+};

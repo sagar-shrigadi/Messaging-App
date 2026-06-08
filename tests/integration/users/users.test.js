@@ -30,8 +30,8 @@ describe("GET '/' route", () => {
   });
 });
 
-describe("GET '/Me' route", () => {
-  it("responds with json containing user info", async () => {
+describe("'/Me' route", () => {
+  it("GET, responds with json containing user info", async () => {
     const token = await createAndLogUser("userInfo");
     const res = await request(app)
       .get("/me")
@@ -40,5 +40,17 @@ describe("GET '/Me' route", () => {
     expect(res.status).toBe(200);
     expect(res.body.success).toBe(true);
     expect(res.body.data.username).toBe("userInfo");
+  });
+  it("PATCH, responds with json containing updated user bio", async () => {
+    const token = await createAndLogUser("userBio");
+    const res = await request(app)
+      .patch("/me")
+      .set("Authorization", `Bearer ${token}`)
+      .send({ bio: "Some updated bio" });
+    expect(res.headers["content-type"]).toMatch(/json/);
+    expect(res.status).toBe(200);
+    expect(res.body.success).toBe(true);
+    expect(res.body.data.username).toBe("userBio");
+    expect(res.body.data.bio).toBe("Some updated bio");
   });
 });
