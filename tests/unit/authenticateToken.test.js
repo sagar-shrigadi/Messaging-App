@@ -24,11 +24,9 @@ describe("Authenticate Token", () => {
     });
     it("responds with 401 when token is expired", async () => {
       const token = await createAndLogUser("auth");
-      //   console.log("token", token);
       const decoded = jwt.verify(token, process.env.JWT_SECRET, {
         algorithms: ["HS256"],
       });
-      //   console.log("token decoded", decoded);
       //   token decoded { id: <num>, iat: 1780216146, exp: 1780302546 }
       const newExpiredToken = `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjQzMywiaWF0IjoxNzgwMjE1OTg5LCJleHAiOjE2NDAzMDYxNDZ9._kZ4L5-W9KwVfdoTHlWWtgUn8In214KZZgch4IHh0cQ`;
       const res = await request(app)

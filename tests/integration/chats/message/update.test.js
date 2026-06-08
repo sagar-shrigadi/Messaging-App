@@ -27,15 +27,11 @@ afterEach(async () => await prisma.clearDb());
 describe("Send and update a global message", () => {
   it("responds with json", async () => {
     const { token, msg } = await createUserWithGlobalMsgAndLogUser("patch");
-    // console.log(token);
-    // console.log(msg);
-    // console.log(msg[0].id);
 
     const res = await request(app)
       .patch(`/${msg[0].id}`)
       .set("Authorization", `Bearer ${token}`)
       .send({ message: "'Nested' becomes 'Nested (updated)'" });
-    // console.log("body", res.body);
 
     expect(res.headers["content-type"]).toMatch(/json/);
     expect(res.status).toBe(200);
@@ -53,13 +49,11 @@ describe("Send and update a message sent to another user", () => {
     // seed data
     await postMessageToUser(user1.id, user2.id, "Hola!");
     const msg = await postMessageToUser(user2.id, user1.id, "How's it gonig!");
-    // console.log(msg);
 
     const res = await request(app)
       .patch(`/${msg.id}`)
       .set("Authorization", `Bearer ${user2.token}`)
       .send({ message: "How's it going!" });
-    // console.log(res.body);
 
     expect(res.headers["content-type"]).toMatch(/json/);
     expect(res.status).toBe(200);

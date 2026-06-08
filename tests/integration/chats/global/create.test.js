@@ -16,7 +16,6 @@ describe("Post global message", () => {
     // a user is created and logged in
     // which returns a jwt token
     const token = await createAndLogUser("Create");
-    // console.log("in test", token);
 
     // because its a protected route, a valid token needs to be sent for authentication
     // set the token using `Authorization` header as `Bearer` token
@@ -26,7 +25,6 @@ describe("Post global message", () => {
       .set("Authorization", `Bearer ${token}`)
       .send({ message: "Hola!" });
     expect(res.headers["content-type"]).toMatch(/json/);
-    // console.log(res.body);
     expect(res.status).toBe(201);
     expect(res.body.success).toBe(true);
     expect(res.body.data.content).toBe("Hola!");

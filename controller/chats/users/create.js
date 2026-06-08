@@ -10,7 +10,6 @@ export const postMsgToUser = [
   async (req, res, next) => {
     const userId = Number(req.user.id);
     const targetUserId = Number(req.params.toUserId);
-    // console.log("target user id", targetUserId);
 
     if (userId === targetUserId) {
       throw new AppError("Invalid request", 400);

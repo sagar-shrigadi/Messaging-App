@@ -23,7 +23,6 @@ describe("Post User message", () => {
       .send({ message: "hey!" });
     expect(res.headers["content-type"]).toMatch(/json/);
     expect(res.status).toBe(201);
-    //   console.log(res.body.data);
     expect(res.body.success).toBe(true);
     expect(res.body.data.authorId).toEqual(user1.id);
     expect(res.body.data.toUserId).toEqual(user2.id);

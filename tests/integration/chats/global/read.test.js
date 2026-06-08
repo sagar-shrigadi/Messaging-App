@@ -16,7 +16,6 @@ test("get all global message", async () => {
   expect(res.headers["content-type"]).toMatch(/json/);
   expect(res.status).toBe(200);
   expect(res.body.success).toBe(true);
-  //   console.log("Read global", res.body);
   const arr = res.body.data;
   expect(arr.length).toBe(2);
 });

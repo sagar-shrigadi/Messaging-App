@@ -15,7 +15,6 @@ async function createAndLogUser(username) {
     username,
     password: "123456",
   });
-  //   console.log("helper", res.body);
   return res.body.data;
 }
 async function createUserWithGlobalMsgAndLogUser(username) {
@@ -24,7 +23,6 @@ async function createUserWithGlobalMsgAndLogUser(username) {
     username,
     password: "123456",
   });
-  //   console.log("helper", res.body);
   return {
     token: res.body.data,
     msg: user.sentMsg,
