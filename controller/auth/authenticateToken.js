@@ -1,6 +1,5 @@
-import "dotenv/config";
-import jwt from "jsonwebtoken";
 import { AppError } from "../../helper/AppErr.js";
+import { verifyToken } from "../../helper/verifyToken.js";
 
 export const authenticateToken = (req, res, next) => {
   const authHeader = req.headers["authorization"];
@@ -10,17 +9,10 @@ export const authenticateToken = (req, res, next) => {
     if (!token) {
       throw new AppError("Token Missing", 401);
     }
-    const decoded = jwt.verify(token, process.env.JWT_SECRET, {
-      algorithms: ["HS256"],
-    });
+    const decoded = verifyToken(token);
     req.user = decoded;
     next();
   } catch (error) {
-    if (error.name === "TokenExpiredError") {
-      next(new AppError("Token has expired, Please Log In!", 401));
-    } else if (error.name === "JsonWebTokenError") {
-      next(new AppError("Deformed Token", 401));
-    }
     next(error);
   }
 };
