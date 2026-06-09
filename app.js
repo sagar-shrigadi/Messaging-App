@@ -14,10 +14,10 @@ const app = express();
 const server = createServer(app);
 const io = new Server(server, {
   cors: {
-    origin: "https://messaging-client.pages.dev/",
+    origin: "*",
   },
 });
-app.use(cors({ origin: "https://messaging-client.pages.dev/" }));
+app.use(cors());
 app.use(helmet());
 
 app.use(express.json());
