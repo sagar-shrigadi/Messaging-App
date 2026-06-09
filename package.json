@@ -19,6 +19,7 @@
     "dev": "node --watch app.js"
   },
   "dependencies": {
+    "@prisma/adapter-neon": "^7.8.0",
     "@prisma/adapter-pg": "^7.8.0",
     "@prisma/client": "^7.8.0",
     "argon2": "^0.44.0",
