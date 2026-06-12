@@ -74,13 +74,11 @@ npm start
 
 - `GET /api/chats/global` - Fetch all messages from global chat.
 - `POST /api/chats/global` - Post a new message to global chat. (Protected)
-- `GET /api/users` - Fetch all Users.
 
 ### Private Chat (User-to-User)
 
 - `GET /api/chats/users/:toUserId` - Fetch all messages between a specified user. (Protected)
 - `POST /api/chats/users/:toUserId` - Post a new message to a specified user. (Protected)
-- `GET /api/comments/:commentId` - Fetch a comment.
 
 ### Messages
 
@@ -89,6 +87,6 @@ npm start
 
 ### User
 
-- `GET  /api/users` - Fetch all Users.
+- `GET /api/users` - Fetch all Users.
 - `GET /api/users/me` - Fetch a specific user (Protected).
 - `PATCH /api/users/me` - Update the user bio (Protected).
