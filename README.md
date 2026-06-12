@@ -6,6 +6,7 @@ This repository is the backend for the project and serves as documentation for t
 ## 🔗 Links
 
 - Live site can be found [here](https://messaging-client.pages.dev/).
+- The frontend repo for this, can be found [here](https://github.com/sagar-shrigadi/Messaging-App-Client)
 
 ## 🚀 Features
 
